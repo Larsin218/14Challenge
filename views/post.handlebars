@@ -1,0 +1,29 @@
+{{> header}}
+
+<main>
+  <article>
+    <h1>{{post.title}}</h1>
+    <p>By {{post.user.username}} on {{post.createdAt}}</p>
+    <p>{{post.content}}</p>
+  </article>
+  {{#if logged_in}}
+  <section>
+    <h2>Leave a Comment</h2>
+    <form id="comment-form">
+      <textarea id="comment" name="comment" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+  {{/if}}
+  <section>
+    <h2>Comments</h2>
+    {{#each post.comments}}
+    <div>
+      <p>{{this.content}}</p>
+      <p>By {{this.user.username}} on {{this.createdAt}}</p>
+    </div>
+    {{/each}}
+  </section>
+</main>
+
+<script src="/js/post.js"></script>
